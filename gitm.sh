@@ -1,6 +1,6 @@
 #!/bin/bash
-
-gitRootDir="/Users/ericxiao/Documents/workspace"
+folder_name="gitm-workspace"
+gitManagerRootDir="/Users/ericxiao/Documents/$folder_name"
 
 function help(){
     echo "options:"
@@ -20,7 +20,7 @@ function clone(){
         url=$1 
         basename=$(basename $url)
         repo_name=${basename%.*}
-        cd $gitRootDir
+        cd $gitManagerRootDir
 
         if ls | grep -Fxq "$repo_name"
         then
@@ -34,19 +34,29 @@ function clone(){
             cd $repo_name
             git clone $url "0-$repo_name"
         fi
+        shift
     else
         echo "No git URL specified"
         exit 1
     fi
-    shift
 }
 
 function list(){
-    echo "list"
-    ls
+    cd $gitManagerRootDir
+    shift
+    if test $# -gt 0; then
+        cd $1
+        ls
+    else
+        ls
+        exit 0
+    fi
 }
 
-echo $GITROOTDIR
+if [ ! -d "$gitManagerRootDir" ]; then
+  # Control will enter here if $DIRECTORY exists.
+  mkdir $gitManagerRootDir
+fi
 while test $# -gt 0; do
         case "$1" in
                 -h|--help)
