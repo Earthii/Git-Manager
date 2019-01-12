@@ -32,7 +32,7 @@ function clone(){
             # repo dir not found
             mkdir $repo_name
             cd $repo_name
-            git clone $url "0-$repo_name"
+            git clone $url "1-$repo_name"
         fi
         shift
     else
