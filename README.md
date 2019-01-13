@@ -8,8 +8,6 @@ gitm ls             : Display all git repos
 gitm ls <repo_name> : Display all copies of a repo  
   
 ## Want to implement
-gitm go <repo_name>          : Go to the parent dir that contains all copies of a repo  
-gitm go <repo_name> <repo_num> : Go to a specific copy of a specific repo  
 gitm <repo_name> <repo_num> exec "string command"  execute the command in the directory
 
 ## improvements
