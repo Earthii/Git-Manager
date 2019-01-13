@@ -4,13 +4,14 @@ gitManagerRootDir="/Users/ericxiao/Documents/$folder_name"
 
 function help(){
     echo "options:"
-    echo "-h, --help                * Show brief help"
+    echo "-h, --help                        * Show brief help"
     echo ""
     echo "actions:"
-    echo "clone <git_url>           * Git clone a repository"
-    echo "ls <repo_name>            * Display the content in the git root directory.
-                            * If the repo_name is specified, 
-                            display all repo specified directories"           
+    echo "clone <git_url>                   * Git clone a repository"
+    echo "ls <repo_name>                    * Display the content in the git root directory.
+                                    * If the repo_name is specified, 
+                                    display all repo specified directories"
+    echo "checkout <repo_name> <env> <branch>   * execute a command in that repo"           
     exit 0
 }
 
@@ -64,6 +65,11 @@ function list(){
         exit 0
     fi
 }
+function checko(){
+    shift
+    cd "$gitManagerRootDir/$1/$2-$1"
+    git checkout $3
+}
 
 if [ ! -d "$gitManagerRootDir" ]; then
   # Control will enter here if $DIRECTORY exists.
@@ -77,12 +83,32 @@ while test $# -gt 0; do
                     ;;
 
                 clone)
-                    clone $@
+                    if [ $# -eq 2 ]
+                    then
+                        clone $@
+                    else
+                        help
+                    fi
                     exit 0
                     ;;
 
                 ls)
-                    list $@
+                    if (($# >= 1 && $# <= 2))
+                    then
+                        list $@
+                    else
+                        help
+                    fi
+                    exit 0
+                    ;;
+
+                checkout)
+                    if [ $# -eq 4 ] 
+                    then
+                        checko $@
+                    else
+                        help
+                    fi                
                     exit 0
                     ;;
 
