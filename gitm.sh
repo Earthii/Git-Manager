@@ -46,7 +46,19 @@ function list(){
     shift
     if test $# -gt 0; then
         cd $1
-        ls
+        echo "Env #     Branch"
+        echo "=====     ======"
+        for dir in *; do
+            env_number=${dir:0:1}
+            branch=""
+            cd $dir
+            if [ -d ".git" ]; then
+                branch="$(git branch | grep "*")"
+            fi
+            branch="${branch//* }"
+            echo "$env_number         $branch"
+            cd ..
+        done
     else
         ls
         exit 0
