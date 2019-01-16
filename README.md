@@ -6,7 +6,7 @@ Sometimes, developers need to spin multiple instances of the same project. So in
 gitm clone <url>    :  clone a repo  
 gitm ls             : Display all git repos  
 gitm ls <repo_name> : Display all copies of a repo  
-gitm checkout <repo_name> <env_number> <branch> : will do a git checkout on that specific env  
+gitm checkout <repo_name> <env_number> <branch_name> : will do a git checkout on that specific env  
 gitm dev <repo_name> <env_number> : will execute `code .` on the proper repo
   
 ## To Install
