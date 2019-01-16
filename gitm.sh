@@ -84,6 +84,12 @@ if [ ! -d "$gitManagerRootDir" ]; then
   # Control will enter here if $DIRECTORY exists.
   mkdir $gitManagerRootDir
 fi
+
+if [ $# -eq 0 ]; then
+    help
+    exit 0
+fi                
+
 while test $# -gt 0; do
         case "$1" in
                 -h|--help)
