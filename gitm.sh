@@ -11,7 +11,8 @@ function help(){
     echo "ls <repo_name>                    * Display the content in the git root directory.
                                     * If the repo_name is specified, 
                                     display all repo specified directories"
-    echo "checkout <repo_name> <env> <branch>   * execute a command in that repo"           
+    echo "checkout <repo_name> <env> <branch>   * execute a command in that repo"
+    echo "dev <repo_name> <env>     *Will open repo in visual code (must have VS_code cli installed)"           
     exit 0
 }
 
@@ -71,6 +72,14 @@ function checko(){
     git checkout $3
 }
 
+function dev(){
+    shift
+    cd "$gitManagerRootDir/$1/$2-$1"
+    if [ -d "$gitManagerRootDir/$1/$2-$1" ]; then
+        code .
+    fi
+}
+
 if [ ! -d "$gitManagerRootDir" ]; then
   # Control will enter here if $DIRECTORY exists.
   mkdir $gitManagerRootDir
@@ -106,6 +115,16 @@ while test $# -gt 0; do
                     if [ $# -eq 4 ] 
                     then
                         checko $@
+                    else
+                        help
+                    fi                
+                    exit 0
+                    ;;
+
+                dev)
+                    if [ $# -eq 3 ] 
+                    then
+                        dev $@
                     else
                         help
                     fi                

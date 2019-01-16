@@ -6,9 +6,10 @@ Sometimes, developers need to spin multiple instances of the same project. So in
 gitm clone <url>    :  clone a repo  
 gitm ls             : Display all git repos  
 gitm ls <repo_name> : Display all copies of a repo  
-  
-## Want to implement
-gitm <repo_name> <repo_num> exec "string command"  execute the command in the directory
+gitm checkout <repo_name> <env_number> <branch> : will do a git checkout on that specific env
+
+## Commands that i want to implement
+execute `code .` on the correct environment
 
 ## improvements
 * Have the gitManagerRootDir be dynamic  
