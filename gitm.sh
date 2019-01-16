@@ -2,17 +2,22 @@
 folder_name="gitm-workspace"
 gitManagerRootDir="/Users/ericxiao/Documents/$folder_name"
 
+function printInLightBlue(){
+    printf "\e[96m$1\033[0m"
+}
+
 function help(){
-    echo "options:"
-    echo "-h, --help                        * Show brief help"
-    echo ""
-    echo "actions:"
-    echo "clone <git_url>                   * Git clone a repository"
-    echo "ls <repo_name>                    * Display the content in the git root directory.
-                                    * If the repo_name is specified, 
-                                    display all repo specified directories"
-    echo "checkout <repo_name> <env> <branch>   * execute a command in that repo"
-    echo "dev <repo_name> <env>     *Will open repo in visual code (must have VS_code cli installed)"           
+    echo "Available Commands:"
+    printInLightBlue "  -h, --help"
+    printf " Display help menu.\n"
+    printInLightBlue "  clone <git_url>"
+    printf " Git clone a repository.\n"
+    printInLightBlue "  ls <optional_repo_name> "
+    printf " ls in gitm-root-dir or ls in specific repo wrapper folder.\n"
+    printInLightBlue "  checkout <repo_name> <env#> <branch>"
+    printf " execute a command in that repo.\n"
+    printInLightBlue "  dev <repo_name> <env#> "    
+    printf " Will open repo in visual code (vs-cli installed).\n"           
     exit 0
 }
 
