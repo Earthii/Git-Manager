@@ -17,9 +17,12 @@ gitm dev <repo_name> <env_number> : will execute `code .` on the proper repo
 ```alias gitm="gitm.sh"``` .  
 
 
-## coomand i want to implement
-Automatically create a clone of a repo without the url   
+## command i want to implement
+1) Automatically create a clone of a repo without the url   
 ``` gitm clone <repo_name> ``` .  
+2) Automatically update all repo
+``` gitm pull <repo_name> ``` .  
+
 
 ## improvements todo
 * Have the gitManagerRootDir be dynamic  
