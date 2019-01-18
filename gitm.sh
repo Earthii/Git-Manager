@@ -17,7 +17,9 @@ function help(){
     printInLightBlue "  checkout <repo_name> <env#> <branch>"
     printf " execute a command in that repo.\n"
     printInLightBlue "  dev <repo_name> <env#> "    
-    printf " Will open repo in visual code (vs-cli installed).\n"           
+    printf " Will open repo in visual code (vs-cli installed).\n"
+    printInLightBlue "  pull <repo_name>"           
+    printf " Will update all the copies of a repository"
     exit 0
 }
 
@@ -85,6 +87,18 @@ function dev(){
     fi
 }
 
+function pull(){
+    shift
+    cd "$gitManagerRootDir/$1"
+    for dir in *; do
+        printInLightBlue "Updating $dir \n"
+
+        cd $dir
+        git pull
+        cd ..
+    done
+}
+
 if [ ! -d "$gitManagerRootDir" ]; then
   # Control will enter here if $DIRECTORY exists.
   mkdir $gitManagerRootDir
@@ -141,6 +155,17 @@ while test $# -gt 0; do
                     fi                
                     exit 0
                     ;;
+
+                pull)
+                    if [ $# -eq 2 ] 
+                    then
+                        pull $@
+                    else
+                        help
+                    fi                
+                    exit 0
+                    ;;
+
 
                 *)
                     help
