@@ -16,7 +16,7 @@ gitm **pull** <repo_name> : will perform a pull on all copies of the repo
 
 1. `rename the variable gitRootManagerDir to the path you want` .
 2. `create a dir at ~/User/<user>/bin` .
-3. Add the following line to your `~/.profile` .  
+3. Add the following line to your `~/.profile` or `~/zshrc` if you're using zshell.  
    `export PATH="$HOME/bin:$PATH"` .  
    `alias gitm="gitm.sh"` .
 
