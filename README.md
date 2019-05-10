@@ -16,15 +16,11 @@ gitm **pull** <repo_name> : will perform a pull on all copies of the repo
 
 1. `rename the variable gitRootManagerDir to the path you want` .
 2. `create a dir at ~/User/<user>/bin` .
-3. Add the following line to your `~/.profile` or `~/.zshrc` if you're using zshell.  
+3. `Add the gitm.sh file into the newly created folder`
+4. Add the following line to your `~/.profile` or `~/.zshrc` if you're using zshell.  
    `export PATH="$HOME/bin:$PATH"` .  
    `alias gitm="gitm.sh"` .
-
-## command i want to implement
-
-1. Automatically create a clone of a repo without the url  
-   `gitm clone <repo_name>` .
-
+   
 ## improvements todo
 
 - Have the gitManagerRootDir be dynamic
